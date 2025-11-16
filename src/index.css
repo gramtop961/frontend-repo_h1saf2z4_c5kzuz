@@ -4,43 +4,38 @@
 
 @layer base {
   :root {
-    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-geist: 'Geist', system-ui, sans-serif;
-    --font-geist-mono: 'Geist Mono', monospace;
-    --font-mona: 'Mona Sans', system-ui, sans-serif;
-    --font-ibm-plex: 'IBM Plex Sans', system-ui, sans-serif;
-    --font-manrope: 'Manrope', system-ui, sans-serif;
+    --bg: #05060a;
+    --neon-blue: #00d4ff;
+    --electric-purple: #9b5cff;
+    --cyan: #3ef0c2;
+    --violet: #7a3cff;
+    --glass-opa: rgba(255,255,255,0.04);
   }
 
   html {
-    font-family: var(--font-sans);
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
   body {
-    @apply antialiased;
+    @apply antialiased bg-[var(--bg)] text-white;
   }
 }
 
-/* Custom utility classes for shadcn/ui patterns */
-@layer utilities {
-  .animate-in {
-    animation-name: animateIn;
-    animation-duration: 350ms;
-    --tw-enter-opacity: initial;
-    --tw-enter-scale: initial;
-    --tw-enter-rotate: initial;
-    --tw-enter-translate-x: initial;
-    --tw-enter-translate-y: initial;
-  }
-
-  .animate-out {
-    animation-name: animateOut;
-    animation-duration: 350ms;
-    --tw-exit-opacity: initial;
-    --tw-exit-scale: initial;
-    --tw-exit-rotate: initial;
-    --tw-exit-translate-x: initial;
-    --tw-exit-translate-y: initial;
-  }
+/*****************
+  Neon UI helpers
+*****************/
+.btn-glow {
+  box-shadow: 0 0 20px rgba(0,212,255,0.35), inset 0 0 0 1px rgba(255,255,255,0.1);
 }
+.glass {
+  background: var(--glass-opa);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Accessibility focus */
+:focus-visible { outline: 2px solid var(--neon-blue); outline-offset: 2px; }
+
+/* Smooth animations */
+.fade-in { animation: fadeIn 600ms ease both; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px);} to { opacity:1; transform: none; } }
